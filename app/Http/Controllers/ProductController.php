@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateSupport;
 
 class ProductController extends Controller
 {
@@ -19,15 +20,12 @@ class ProductController extends Controller
         return view('admin.product.create');
     }
 
-    public function save(Request $request)
+    public function save(StoreUpdateSupport $request)
     {
-        $validation = $request->validate([  
-            'nome'=> 'required',
-            'categoria'=> 'required',
-            'preço'=> 'required',
-        ]);
-
-        $data = Product::create($validation);
+        
+        $data = $request->validated();
+        // dd($data);
+        $data = Product::create($data);
         if ($data) {
             session()->flash('success','Produto adicionado com sucesso');
             return redirect()->route('products.index');
@@ -54,23 +52,19 @@ class ProductController extends Controller
             return redirect()->route('products.index');
         }
     }
-    public function update(Request $request, $id)
+    public function update(StoreUpdateSupport $request, $id)
     {
+        $data = $request->validated();
 
-        $validation = $request->validate([  
-            'nome'=> 'required',
-            'categoria'=> 'required',
-            'preço'=> 'required',
-        ]);
-
-        $products = Product::findOrFail($id, $validation);
+        $products = Product::findOrFail($id);
+        
         $nome = $request->nome;
         $categoria = $request->categoria;
-        $preço = $request->preço;
+        $valor = $request->valor;
 
         $products->nome = $nome;
         $products->categoria = $categoria;
-        $products->preço = $preço;
+        $products->valor = $valor;
         $data = $products->save();
         if ($data) {
             session()->flash('success', 'Produto atualizado com sucesso!');

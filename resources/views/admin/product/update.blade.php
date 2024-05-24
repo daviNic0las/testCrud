@@ -14,10 +14,13 @@
                     <form action="{{ route("products.update", $products->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+
+                    <p><a href="{{ route('products.index') }}" class="btn btn-warning">Voltar</a></p>
+
                     <div class="row">
                         <div class="col mb-3">
                             <label class="form-label">Nome do produto</label>
-                            <input type="text" name="nome" class="form-control" placeholder="Nome" required value="{{$products->nome}}">
+                            <input type="text" name="nome" required class="form-control" placeholder="Nome*"  value="{{$products->nome}}">
                             @error('nome')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -26,7 +29,7 @@
                     <div class="row">
                         <div class="col mb-3">
                             <label class="form-label">Categoria do produto</label>
-                            <input type="text" name="categoria" class="form-control" placeholder="Categoria" required value="{{$products->categoria}}">
+                            <input type="text" name="categoria" required class="form-control" placeholder="Categoria*"  value="{{$products->categoria}}">
                             @error('categoria')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -34,9 +37,9 @@
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Preço </label>
-                            <input type="text" name="preço" class="form-control" placeholder="Preço" required value="{{$products->preço}}">
-                            @error('preço')
+                            <label class="form-label">Valor </label>
+                            <input type="text" name="valor" required class="form-control" placeholder="Valor*"  value="{{$products->valor}}">
+                            @error('valor')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
@@ -52,5 +55,3 @@
         </div>
     </div>
 </x-app-layout>
-
-<!-- task list: ajeitar bug do update -->
