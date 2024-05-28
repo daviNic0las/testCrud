@@ -32,8 +32,3 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// Route::get('admin/dashboard', [HomeController::class,'index']);
-// Route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth', 'admin']);
-
-// minuto do vídeo: fala com a bandeira 16:16

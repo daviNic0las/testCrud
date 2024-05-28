@@ -38,5 +38,3 @@ class StoreUpdateSupport extends FormRequest
             return $rules;
     }
 }
-
-// crud laravel 10 especializa ti aula 17 min 2:51
