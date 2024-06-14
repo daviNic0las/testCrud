@@ -18,8 +18,16 @@ return new class extends Migration
             $table->integer('valor');
             $table->timestamps();
         });
-    }
 
+        Schema::create('employees', function (Blueprint $table){
+            $table->id();
+            $table->string('nomeF');
+            $table->string('setor');
+            $table->integer('salario');
+            $table->timestamps();
+        });
+    }
+    
     /**
      * Reverse the migrations.
      */

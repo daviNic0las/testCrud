@@ -14,8 +14,7 @@ class ProductController extends Controller
         $total = Product::count();
         return view('admin.product.home', compact(['products','total']));
     }
-
-    public function create()
+        public function create()
     {
         return view('admin.product.create');
     }
