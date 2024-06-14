@@ -48,3 +48,5 @@ require __DIR__.'/auth.php';
 // próximo crud: categoria, chave estrangeira no produtos/botão select
 
 // outro crud funcionários
+
+//tjurjke
