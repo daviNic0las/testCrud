@@ -43,5 +43,4 @@ require __DIR__.'/auth.php';
 
 // Task list ajeitar o lance da moeda pra valores decimais e com VIRGULA,
 // posicionar o produtos para a navbar, 
-
 // próximo crud: categoria, chave estrangeira no produtos/botão select
