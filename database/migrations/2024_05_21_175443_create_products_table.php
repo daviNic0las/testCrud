@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('categoria');
-            $table->integer('valor');
+            $table->string('valor');
             $table->timestamps();
         });
 
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('setor');
-            $table->integer('salario');
+            $table->string('salario');
             $table->timestamps();
         });
 

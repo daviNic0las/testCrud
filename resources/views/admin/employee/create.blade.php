@@ -39,7 +39,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="salario" required value="{{ old("salario") }}" class="form-control" placeholder="Salário*">
+                                    <input type="text" name="salario" required value="{{ old("salario") }}" class="form-control" placeholder="Salário*" onInput="mascaraMoeda(event);">
                                     @error('salario')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -56,3 +56,21 @@
         </div>
     </div>
 </x-app-layout> 
+<script>
+    const mascaraMoeda = (event) => {
+  const onlyDigits = event.target.value
+    .split("")
+    .filter(s => /\d/.test(s))
+    .join("")
+    .padStart(3, "0")
+  const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+  event.target.value = maskCurrency(digitsFloat)
+}
+
+const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency
+  }).format(valor)
+}
+</script>

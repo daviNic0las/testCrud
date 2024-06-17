@@ -15,14 +15,18 @@
                     <x-nav-link :href="route('admin.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Produtos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Categorias') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('employee.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Funcionários') }}
+                    </x-nav-link>
                 </div>
             </div>
 
-            <div class=" d-flex pt-3">
-                    <p><a href="{{route("products.index")}}" class="btn mx-1">Produtos</a></p>
-                    <p><a href="{{route("category.index")}}" class="btn mx-1">Categorias</a></p>
-                    <p><a href="{{route("employee.index")}}" class="btn mx-1">Funcionários</a></p>
-            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
