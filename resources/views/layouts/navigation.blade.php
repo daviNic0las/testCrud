@@ -18,6 +18,12 @@
                 </div>
             </div>
 
+            <div class=" d-flex pt-3">
+                    <p><a href="{{route("products.index")}}" class="btn btn-primary mx-1">Produtos</a></p>
+                    <p><a href="{{route("category.index")}}" class="btn btn-primary mx-1">Categorias</a></p>
+                    <p><a href="{{route("employee.index")}}" class="btn btn-primary mx-1">Funcionários</a></p>
+            </div>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">

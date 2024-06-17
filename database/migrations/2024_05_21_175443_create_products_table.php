@@ -26,6 +26,12 @@ return new class extends Migration
             $table->integer('salario');
             $table->timestamps();
         });
+
+        Schema::create('categories', function (Blueprint $table){
+            $table->id();
+            $table->string('nome');
+            $table->timestamps();
+        });
     }
     
     /**

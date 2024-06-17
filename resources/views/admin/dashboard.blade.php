@@ -10,11 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 text-align-center ">
                     {{ __("Bem vindo admin") }}
-                    <div class="d-block d-flex pt-2">
-                    <p><a href="{{route("products.index")}}" class="btn btn-primary mx-1">Produtos</a></p>
-                    <p><a href="{{route("products.index")}}" class="btn btn-primary mx-1">Categorias</a></p>
-                    <p><a href="{{route("employee.index")}}" class="btn btn-primary mx-1">Funcionários</a></p>
-                    </div>
                 </div>
             </div>
         </div>

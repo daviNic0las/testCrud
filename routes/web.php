@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,10 +38,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/employee/edit/{id}', [EmployeeController::class,'edit'])->name('employee.edit');
     Route::put('/employee/edit/{id}', [EmployeeController::class, 'update'])->name('employee.update');
     Route::get('/employee/delete/{id}', [EmployeeController::class,'delete'])->name('employee.delete');
+
+    Route::get('/category', [CategoryController::class,'index'])->name('category.index');
+    Route::get('/category/create', [CategoryController::class,'create'])->name('category.create');
+    Route::post('/category/save', [CategoryController::class,'save'])->name('category.save');
+    Route::get('/category/edit/{id}', [CategoryController::class,'edit'])->name('category.edit');
+    Route::put('/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/delete/{id}', [CategoryController::class,'delete'])->name('category.delete');
 });
 
 require __DIR__.'/auth.php';
 
-// Task list ajeitar o lance da moeda pra valores decimais e com VIRGULA,
-// posicionar o produtos para a navbar, 
-// próximo crud: categoria, chave estrangeira no produtos/botão select
