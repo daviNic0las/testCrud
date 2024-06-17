@@ -23,7 +23,8 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome*">
+                                    <label class="form-label">Nome da Categoria*</label>
+                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome">
                                     @error('nome')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

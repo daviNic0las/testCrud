@@ -19,8 +19,8 @@
 
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Nome do Funcionário</label>
-                            <input type="text" name="nome"  class="form-control" placeholder="Nome*"  value="{{$employees->nome}}">
+                            <label class="form-label">Nome do Funcionário*</label>
+                            <input type="text" name="nome"  class="form-control" placeholder="Nome"  value="{{$employees->nome}}">
                             @error('nome')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -28,8 +28,8 @@
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Setor do Funcionário</label>
-                            <input type="text" name="setor"  class="form-control" placeholder="Setor*"  value="{{$employees->setor}}">
+                            <label class="form-label">Setor do Funcionário*</label>
+                            <input type="text" name="setor"  class="form-control" placeholder="Setor"  value="{{$employees->setor}}">
                             @error('setor')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -37,8 +37,8 @@
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Valor </label>
-                            <input type="text" name="salario"  class="form-control" placeholder="Salário*"  value="{{$employees->salario}}" onInput="mascaraMoeda(event);">
+                            <label class="form-label">Salário*</label>
+                            <input type="text" name="salario"  class="form-control" placeholder="Salário"  value="{{$employees->salario}}" onInput="mascaraMoeda(event);">
                             @error('salario')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

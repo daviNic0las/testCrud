@@ -19,8 +19,8 @@
 
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Nome da Categoria</label>
-                            <input type="text" name="nome" required class="form-control" placeholder="Nome*"  value="{{$categories->nome}}">
+                            <label class="form-label">Nome da Categoria*</label>
+                            <input type="text" name="nome" required class="form-control" placeholder="Nome"  value="{{$categories->nome}}">
                             @error('nome')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

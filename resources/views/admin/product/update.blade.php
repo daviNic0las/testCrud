@@ -19,8 +19,8 @@
 
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Nome do produto</label>
-                            <input type="text" name="nome" required class="form-control" placeholder="Nome*"  value="{{$products->nome}}">
+                            <label class="form-label">Nome do produto*</label>
+                            <input type="text" name="nome" required class="form-control" placeholder="Nome"  value="{{$products->nome}}">
                             @error('nome')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -28,8 +28,8 @@
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Categoria do produto</label>
-                            <input type="text" name="categoria" required class="form-control" placeholder="Categoria*"  value="{{$products->categoria}}">
+                            <label class="form-label">Categoria do produto*</label>
+                            <input type="text" name="categoria" required class="form-control" placeholder="Categoria"  value="{{$products->categoria}}">
                             @error('categoria')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -37,8 +37,8 @@
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Valor </label>
-                            <input type="text" name="valor" required class="form-control" placeholder="Valor*"  value="{{$products->valor}}" onInput="mascaraMoeda(event);">
+                            <label class="form-label">Valor*</label>
+                            <input type="text" name="valor" required class="form-control" placeholder="Valor"  value="{{$products->valor}}" onInput="mascaraMoeda(event);">
                             @error('valor')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

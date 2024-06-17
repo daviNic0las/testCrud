@@ -23,7 +23,8 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome*">
+                                <label class="form-label">Nome do produto*</label>
+                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome">
                                     @error('nome')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -31,7 +32,8 @@
                             </div>
                             <div class="row mb-3"> 
                                 <div class="col">
-                                    <input type="text" name="categoria" required value="{{ old("categoria") }}" class="form-control" placeholder="Categoria*">
+                                <label class="form-label">Categoria do produto*</label>
+                                    <input type="text" name="categoria" required value="{{ old("categoria") }}" class="form-control" placeholder="Categoria">
                                     @error('categoria')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -39,7 +41,8 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="valor" required value="{{ old("valor") }}" class="form-control" placeholder="Valor*" onInput="mascaraMoeda(event);">
+                                <label class="form-label">Valor*</label>
+                                    <input type="text" name="valor" required value="{{ old("valor") }}" class="form-control" placeholder="Valor" onInput="mascaraMoeda(event);">
                                     @error('valor')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

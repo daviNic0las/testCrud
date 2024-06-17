@@ -23,7 +23,8 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome*">
+                                <label class="form-label">Nome do Funcionário*</label>
+                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome">
                                     @error('nome')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -31,7 +32,8 @@
                             </div>
                             <div class="row mb-3"> 
                                 <div class="col">
-                                    <input type="text" name="setor" required value="{{ old("setor") }}" class="form-control" placeholder="Setor*">
+                                <label class="form-label">Setor do Funcionário*</label>
+                                    <input type="text" name="setor" required value="{{ old("setor") }}" class="form-control" placeholder="Setor">
                                     @error('setor')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -39,7 +41,8 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <input type="text" name="salario" required value="{{ old("salario") }}" class="form-control" placeholder="Salário*" onInput="mascaraMoeda(event);">
+                                <label class="form-label">Salário*</label>
+                                    <input type="text" name="salario" required value="{{ old("salario") }}" class="form-control" placeholder="Salário" onInput="mascaraMoeda(event);">
                                     @error('salario')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
