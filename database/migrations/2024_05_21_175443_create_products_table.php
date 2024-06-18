@@ -11,10 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::create('categories', function (Blueprint $table){
+            $table->id();
+            $table->string('nome');
+            $table->timestamps();
+        });
+        
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('categoria');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('valor');
             $table->timestamps();
         });
@@ -24,12 +33,6 @@ return new class extends Migration
             $table->string('nome');
             $table->string('setor');
             $table->string('salario');
-            $table->timestamps();
-        });
-
-        Schema::create('categories', function (Blueprint $table){
-            $table->id();
-            $table->string('nome');
             $table->timestamps();
         });
     }

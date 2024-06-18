@@ -34,7 +34,7 @@
                             <tr>
                                 <td class="align-middle">{{ $loop->iteration}}</td>
                                 <td class="align-middle">{{ $product->nome}}</td>
-                                <td class="align-middle">{{ $product->categoria}}</td>
+                                <td class="align-middle">{{ $product->category->nome }}</td>
                                 <td class="align-middle">{{ $product->valor}}</td>
                                 <td class="align-middle">
                                         <a href="{{ route('products.edit', ['id'=>$product->id]) }}" type="button" class="btn btn-warning">Editar</a>

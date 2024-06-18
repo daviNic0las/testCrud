@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUpdateSupport;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -12,6 +13,7 @@ class ProductController extends Controller
     {
         $products = Product::orderBy('id', 'desc')->get();
         $total = Product::count();
+        $produtos = Product::with('category')->get();
         return view('admin.product.home', compact(['products','total']));
     }
         public function create()
