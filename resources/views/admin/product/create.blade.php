@@ -33,10 +33,12 @@
                             <div class="row mb-3"> 
                                 <div class="col">
                                 <label class="form-label">Categoria do produto*</label>
-                                    <input type="text" name="categoria" required value="{{ old("categoria") }}" class="form-control" placeholder="Categoria">
-                                    @error('categoria')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
+                                    <select id="category" name="category_id" class="form-control" required>
+                                        <option value="">Selecione uma Categoria</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mb-3">

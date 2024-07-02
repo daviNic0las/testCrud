@@ -14,8 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'desc')->get();
-        $total = Category::count();
-        return view('admin.category.home', compact(['categories','total']));
+        return view('admin.category.home', compact(['categories',]));
     }
 
     /**
