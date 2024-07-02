@@ -49,3 +49,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// próximo desafio: fazer o CRUD "setor" para Funcionários

@@ -39,7 +39,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-center" colspan="5">Categoria não encontrado</td>
+                                <td class="text-center" colspan="5">Categoria não encontrada. Crie uma nova para poder criar seus produtos!</td>
                             </tr>
                             @endforelse
                         </tbody>

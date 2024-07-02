@@ -64,11 +64,9 @@ class CategoryController extends Controller
 
         $categories = Category::findOrFail($id);
         
-        $category_id = $request->$category_id;
         $nome = $request->nome;
         
         $categories->nome = $nome;
-        $categories->category_id = $category_id;
 
         $data = $categories->save();
         if ($data) {
