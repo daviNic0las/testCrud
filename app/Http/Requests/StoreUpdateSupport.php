@@ -23,7 +23,7 @@ class StoreUpdateSupport extends FormRequest
     public function rules(): array
     {
             $rules = ['nome' => 'required|min:1|max:255|unique:products',
-            'categoria' => 'required|min:1|max:255',
+            'category_id' => 'required|min:1|max:255',
             'valor' => 'required|min:1|max:255',];
 
             if ($this->Method() === 'PUT') {

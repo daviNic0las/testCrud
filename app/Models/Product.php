@@ -12,7 +12,7 @@ class Product extends Model
     protected $state = 'products';
     protected $fillable = [
         'nome',
-        'categoria',
+        'category_id',
         'valor',
     ];
     public function category(): BelongsTo

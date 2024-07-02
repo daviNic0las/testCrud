@@ -33,13 +33,13 @@
                             <div class="row mb-3"> 
                                 <div class="col">
                                 <label class="form-label">Categoria do produto*</label>
-                                    <select id="category" name="category_id" class="form-control" >
+                                    <select id="category" name="category_id" required class="form-control" >
                                         <option value="">Selecione uma Categoria</option>
                                         @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}"> {{ $category->nome }} </option>
                                         @endforeach
                                     </select>
-                                    @error('categoria')
+                                    @error('category_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>

@@ -61,11 +61,11 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
         
         $nome = $request->nome;
-        $categoria = $request->categoria;
+        $category_id = $request->category_id;
         $valor = $request->valor;
 
         $products->nome = $nome;
-        $products->categoria = $categoria;
+        $products->category_id = $category_id;
         $products->valor = $valor;
         $data = $products->save();
         if ($data) {
