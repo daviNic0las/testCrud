@@ -33,8 +33,13 @@
                             <div class="row mb-3"> 
                                 <div class="col">
                                 <label class="form-label">Setor do Funcionário*</label>
-                                    <input type="text" name="setor" required value="{{ old("setor") }}" class="form-control" placeholder="Setor">
-                                    @error('setor')
+                                    <select id="sector" name="sector_id" required  class="form-control">
+                                        <option value="">Selecione uma Categoria</option>
+                                        @foreach ($sectors as $sector)
+                                        <option value="{{ $sector->id }}"> {{ $sector->nome }} </option>
+                                        @endforeach
+                                    </select>
+                                    @error('sector_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>

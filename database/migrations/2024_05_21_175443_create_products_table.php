@@ -18,6 +18,11 @@ return new class extends Migration
             $table->timestamps();
         });
         
+        Schema::create('sectors', function (Blueprint $table){
+            $table->id();
+            $table->string('nome');
+            $table->timestamps();
+        });
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
@@ -31,7 +36,8 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table){
             $table->id();
             $table->string('nome');
-            $table->string('setor');
+            $table->unsignedBigInteger('sector_id');
+            $table->foreign('sector_id')->references('id')->on('sectors')->onDelete('cascade');
             $table->string('salario');
             $table->timestamps();
         });

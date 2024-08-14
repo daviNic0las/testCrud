@@ -1,7 +1,7 @@
-<x-app-layout> 
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Funcionários Administrador') }}
+            {{ __('Setores Administrador') }}
         </h2>
     </x-slot>
 
@@ -10,8 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h1 class="mb-0">Lista de Funcionários</h1>
-                        <a href="{{ route('employee.create') }}" class="btn btn-primary">Adicionar Funcionário</a>
+                        <h1 class="mb-0">Lista de Setores</h1>
+                        <a href="{{ route('sector.create') }}" class="btn btn-primary">Adicionar Setor</a>
                     </div>
                     <hr />
                     @if(Session::has('success'))
@@ -24,26 +24,22 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
-                                <th>Setor</th>
-                                <th>Salário</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($employees as $employee)
+                            @forelse ($sectors as $sector)
                             <tr>
                                 <td class="align-middle">{{ $loop->iteration}}</td>
-                                <td class="align-middle">{{ $employee->nome}}</td>
-                                <td class="align-middle">{{ $employee->sector->nome}}</td>
-                                <td class="align-middle">{{ $employee->salario}}</td>
+                                <td class="align-middle">{{ $sector->nome}}</td>
                                 <td class="align-middle">
-                                        <a href="{{ route('employee.edit', ['id'=>$employee->id]) }}" type="button" class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('employee.delete', ['id'=>$employee->id]) }}" type="button" class="btn btn-danger">Excluir</a>
+                                        <a href="{{ route('sector.edit', ['id'=>$sector->id]) }}" type="button" class="btn btn-warning">Editar</a>
+                                        <a href="{{ route('sector.delete', ['id'=>$sector->id]) }}" type="button" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-center" colspan="5">Funcionário não encontrado. Lembre-se que é necessário ter algum setor antes de poder adicionar um novo funcionário!</td>
+                                <td class="text-center" colspan="5">Setor não encontrado. Crie uma novo para poder adicionar seus funcionários!</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -52,4 +48,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SectorController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -45,8 +46,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/category/edit/{id}', [CategoryController::class,'edit'])->name('category.edit');
     Route::put('/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/category/delete/{id}', [CategoryController::class,'delete'])->name('category.delete');
+
+    Route::get('/sector', [SectorController::class,'index'])->name('sector.index');
+    Route::get('/sector/create', [SectorController::class,'create'])->name('sector.create');
+    Route::post('/sector/save', [SectorController::class,'save'])->name('sector.save');
+    Route::get('/sector/edit/{id}', [SectorController::class,'edit'])->name('sector.edit');
+    Route::put('/sector/edit/{id}', [SectorController::class, 'update'])->name('sector.update');
+    Route::get('/sector/delete/{id}', [SectorController::class,'delete'])->name('sector.delete');
 });
 
 require __DIR__.'/auth.php';
 
-// próximo desafio: fazer o CRUD "setor" para Funcionários
+// 12345678
+// arrumar bugs sérios
+// ajeitar o update do funcionário e do produto
+// verificar todos os campos com validação
+// te vira pra: mudar de save -> store , delete -> destroy

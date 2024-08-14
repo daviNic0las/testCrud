@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('employee.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Funcionários') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('sector.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Setores') }}
+                    </x-nav-link>
                 </div>
             </div>
 
