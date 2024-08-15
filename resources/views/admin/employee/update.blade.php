@@ -4,7 +4,7 @@
             {{ __('Edição de Funcionário') }}
         </h2>
     </x-slot> 
-
+ 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -27,12 +27,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Setor do Funcionário*</label>
-                            <input type="text" name="setor"  class="form-control" placeholder="Setor"  value="{{$employees->setor}}">
-                            @error('setor')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
+                        <div class="col">
+                        <label class="form-label">Setor do Funcionário*</label>
+                            <select id="sector" name="sector_id" required class="form-control" >
+                                <option value="">Selecione um Setor</option>
+                                    @foreach ($sectors as $sector)
+                                <option value="{{ $sector->id }}"> {{ $sector->nome }} </option>
+                                    @endforeach
+                            </select>
+                                    @error('sector_id')
+                                <span class="text-danger">{{$message}}</span>
+                                    @enderror
                         </div>
                     </div>
                     <div class="row">

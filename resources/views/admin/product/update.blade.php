@@ -27,12 +27,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Categoria do produto*</label>
-                            <input type="text" name="categoria" required class="form-control" placeholder="Categoria"  value="{{$products->categoria}}">
-                            @error('categoria')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
+                        <div class="col">
+                        <label class="form-label">Categoria do produto*</label>
+                            <select id="category" name="category_id" required class="form-control" >
+                                <option value="">Selecione uma Categoria</option>
+                                    @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"> {{ $category->nome }} </option>
+                                    @endforeach
+                            </select>
+                                    @error('category_id')
+                                <span class="text-danger">{{$message}}</span>
+                                    @enderror
                         </div>
                     </div>
                     <div class="row">

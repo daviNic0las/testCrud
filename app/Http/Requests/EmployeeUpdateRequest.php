@@ -23,7 +23,7 @@ class EmployeeUpdateRequest extends FormRequest
     public function rules(): array
     {
             $rules = ['nome' => 'required|min:1|max:255|unique:employees',
-            'setor' => 'required|min:1|max:255',
+           'sector_id' => 'required|min:1|max:255',
             'salario' => 'required|min:1|max:255',];
 
             if ($this->Method() === 'PUT') {

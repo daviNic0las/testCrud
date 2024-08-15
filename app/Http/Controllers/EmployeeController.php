@@ -17,7 +17,8 @@ class EmployeeController extends Controller
     }
         public function create()
     {
-        return view('admin.employee.create');
+        $sectors = Sector::all();
+        return view('admin.employee.create', compact('sectors'));
     }
 
     public function save(EmployeeUpdateRequest $request)
@@ -37,8 +38,9 @@ class EmployeeController extends Controller
 
     public function edit($id)
     {
+        $sectors = Sector::all();
         $employees = Employee::findOrFail($id);
-        return view('admin.employee.update', compact('employees',));
+        return view('admin.employee.update', compact('employees', 'sectors'));
     }
 
     public function delete($id)
@@ -59,11 +61,11 @@ class EmployeeController extends Controller
         $employees = Employee::findOrFail($id);
         
         $nome = $request->nome;
-        $setor = $request->setor;
+        $sector_id = $request->sector_id;
         $salario = $request->salario;
 
         $employees->nome = $nome;
-        $employees->setor = $setor;
+        $employees->sector_id = $sector_id;                                                 
         $employees->salario = $salario;
         $data = $employees->save();
         if ($data) {
