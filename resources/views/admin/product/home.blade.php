@@ -26,6 +26,7 @@
                                 <th>Nome</th>
                                 <th>Categoria</th>
                                 <th>Valor</th>
+                                <th>Imagem</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td class="align-middle">{{ $product->nome}}</td>
                                 <td class="align-middle">{{ $product->category->nome }}</td>
                                 <td class="align-middle">{{ $product->valor}}</td>
+                                <td class="align-middle">{{ $product->imagem}}</td>
                                 <td class="align-middle">
                                         <a href="{{ route('products.edit', ['id'=>$product->id]) }}" type="button" class="btn btn-warning">Editar</a>
                                         <a href="{{ route('products.delete', ['id'=>$product->id]) }}" type="button" class="btn btn-danger">Excluir</a>

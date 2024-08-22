@@ -79,4 +79,47 @@ class ProductController extends Controller
 
     
 }
-}
+} 
+
+// if($this->has('image')) {
+//     $file = $this->file('image');
+//     $extension = $file->getClientOriginalExtension();
+
+//     $filename = time().'.'.$extension;
+
+//     $path = 'uploads.category';
+//     $file->move($path, $filename);
+
+//     Product::create([
+//         'image' => $path.$filename,
+//     ]);
+
+// }
+
+// public function store(StoreUpdateSupport $request)
+//     {
+//         $data = $request->validated();
+
+//         if ($request->hasFile('image')) {
+//             $file = $request->file('image');
+//             $filename = time() . '.' . $file->getClientOriginalExtension();
+//             $path = $file->storeAs('uploads/products', $filename, 'public');
+//             $data['image'] = $path;
+//         }
+
+// public function update(StoreUpdateSupport $request, $id)
+//     {
+//         $product = Product::findOrFail($id);
+//         $data = $request->validated();
+
+//         if ($request->hasFile('image')) {
+//             // Remove a imagem antiga, se existir
+//             if ($product->image) {
+//                 \Storage::disk('public')->delete($product->image);
+//             }
+
+//             $file = $request->file('image');
+//             $filename = time() . '.' . $file->getClientOriginalExtension();
+//             $path = $file->storeAs('uploads/products', $filename, 'public');
+//             $data['image'] = $path;
+//         }

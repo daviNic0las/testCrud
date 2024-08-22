@@ -53,6 +53,15 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Enviar Imagem do Produto*</label>
+                                    <input type="file" name="imagem" required value="{{ old("imagem") }}" class="form-control required">
+                                    @error('imagem')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="d-grid">
                                     <button class="btn btn-primary">Adicionar</button>

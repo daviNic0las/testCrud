@@ -17,12 +17,6 @@ return new class extends Migration
             $table->string('nome');
             $table->timestamps();
         });
-        
-        Schema::create('sectors', function (Blueprint $table){
-            $table->id();
-            $table->string('nome');
-            $table->timestamps();
-        });
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
@@ -30,15 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('valor');
-            $table->timestamps();
-        });
-
-        Schema::create('employees', function (Blueprint $table){
-            $table->id();
-            $table->string('nome');
-            $table->unsignedBigInteger('sector_id');
-            $table->foreign('sector_id')->references('id')->on('sectors')->onDelete('cascade');
-            $table->string('salario');
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }
@@ -48,6 +34,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('products');
     }
 };
+
+// 5:00

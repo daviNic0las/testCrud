@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateSupport extends FormRequest
@@ -24,7 +25,11 @@ class StoreUpdateSupport extends FormRequest
     {
             $rules = ['nome' => 'required|min:1|max:255|unique:products',
             'category_id' => 'required|min:1|max:255',
-            'valor' => 'required|min:1|max:255',];
+            'valor' => 'required|min:1|max:255',
+            'imagem => nullable|mimes:png,jpg,jpeg,webp|max:2048',
+        ];
+
+            
 
             if ($this->Method() === 'PUT') {
                 $rules['nome'] = [  
@@ -37,4 +42,4 @@ class StoreUpdateSupport extends FormRequest
         
             return $rules;
     }
-}
+} 
