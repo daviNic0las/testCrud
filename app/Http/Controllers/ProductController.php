@@ -28,6 +28,14 @@ class ProductController extends Controller
         $data = $request->validated();
         // dd($data);
         $data = Product::create($data);
+        
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads/products', $filename, 'public');
+            $data['image'] = $path;
+            }
+
         if ($data) {
             session()->flash('success','Produto adicionado com sucesso');
             return redirect()->route('products.index');
@@ -35,6 +43,7 @@ class ProductController extends Controller
             session()->flash('error','Falha na criação');
             return redirect()->route('products.create');
         }
+        
     }
 
     public function edit($id)
@@ -69,6 +78,18 @@ class ProductController extends Controller
         $products->category_id = $category_id;
         $products->valor = $valor;
         $data = $products->save();
+
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                \Storage::disk('public')->delete($product->image);
+           }
+
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads/products', $filename, 'public');
+            $data['image'] = $path;
+       }
+
         if ($data) {
             session()->flash('success', 'Produto atualizado com sucesso!');
             return redirect()->route('products.index');
@@ -96,30 +117,17 @@ class ProductController extends Controller
 
 // }
 
+
+
 // public function store(StoreUpdateSupport $request)
 //     {
 //         $data = $request->validated();
 
-//         if ($request->hasFile('image')) {
-//             $file = $request->file('image');
-//             $filename = time() . '.' . $file->getClientOriginalExtension();
-//             $path = $file->storeAs('uploads/products', $filename, 'public');
-//             $data['image'] = $path;
-//         }
+       
 
 // public function update(StoreUpdateSupport $request, $id)
 //     {
 //         $product = Product::findOrFail($id);
 //         $data = $request->validated();
 
-//         if ($request->hasFile('image')) {
-//             // Remove a imagem antiga, se existir
-//             if ($product->image) {
-//                 \Storage::disk('public')->delete($product->image);
-//             }
-
-//             $file = $request->file('image');
-//             $filename = time() . '.' . $file->getClientOriginalExtension();
-//             $path = $file->storeAs('uploads/products', $filename, 'public');
-//             $data['image'] = $path;
-//         }
+         

@@ -56,7 +56,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Enviar Imagem do Produto*</label>
-                                    <input type="file" name="imagem" required value="{{ old("imagem") }}" class="form-control required">
+                                    <input type="file" name="imagem" accept=".png, .jpg, .jpeg, .webp" required value="{{ old("imagem") }}" class="form-control required">
                                     @error('imagem')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
