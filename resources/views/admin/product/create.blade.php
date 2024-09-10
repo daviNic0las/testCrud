@@ -1,7 +1,7 @@
-<x-app-layout>  
+<x-app-layout> 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Adicionar Funcionário') }}
+            {{ __('Criar Produto') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                        <h1 class="mb-0">Novo Funcionário</h1>
+                        <h1 class="mb-0">Novo Produto</h1>
                         <hr />
                         @if (session()->has('error'))
                         <div>
@@ -17,13 +17,13 @@
                         </div>
                         @endif
 
-                        <p><a href="{{ route('employee.index') }}" class="btn btn-primary">Voltar</a></p>
+                        <p><a href="{{ route('products.index') }}" class="btn btn-primary">Voltar</a></p>
 
-                        <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                <label class="form-label">Nome do Funcionário*</label>
+                                <label class="form-label">Nome do produto*</label>
                                     <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome">
                                     @error('nome')
                                     <span class="text-danger">{{$message}}</span>
@@ -32,23 +32,23 @@
                             </div>
                             <div class="row mb-3"> 
                                 <div class="col">
-                                <label class="form-label">Setor do Funcionário*</label>
-                                    <select id="sector" name="sector_id" required  class="form-control">
+                                <label class="form-label">Categoria do produto*</label>
+                                    <select id="category" name="category_id" required class="form-control" >
                                         <option value="">Selecione uma Categoria</option>
-                                        @foreach ($sectors as $sector)
-                                        <option value="{{ $sector->id }}"> {{ $sector->nome }} </option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"> {{ $category->nome }} </option>
                                         @endforeach
                                     </select>
-                                    @error('sector_id')
+                                    @error('category_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                </div>
+                                </div> 
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
-                                <label class="form-label">Salário*</label>
-                                    <input type="text" name="salario" required value="{{ old("salario") }}" class="form-control" placeholder="Salário" onInput="mascaraMoeda(event);">
-                                    @error('salario')
+                                <label class="form-label">Valor*</label>
+                                    <input type="text" name="valor" required value="{{ old("valor") }}" class="form-control" placeholder="Valor" onInput="mascaraMoeda(event);">
+                                    @error('valor')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>
 <script>
     const mascaraMoeda = (event) => {
   const onlyDigits = event.target.value
