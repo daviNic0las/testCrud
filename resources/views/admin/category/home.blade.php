@@ -34,7 +34,7 @@
                                 <td class="align-middle">{{ $category->nome}}</td>
                                 <td class="align-middle">
                                         <a href="{{ route('category.edit', ['id'=>$category->id]) }}" type="button" class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('category.delete', ['id'=>$category->id]) }}" type="button" class="btn btn-danger">Excluir</a>
+                                        <a href="{{ route('category.destroy', ['id'=>$category->id]) }}" type="button" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                             @empty
