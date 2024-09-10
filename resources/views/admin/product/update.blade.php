@@ -1,26 +1,26 @@
 <x-app-layout> 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edição de Funcionário') }}
+            {{ __('Edição de Produto') }}
         </h2>
-    </x-slot> 
- 
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="mb-0">Editar Funcionário</h1>
+                    <h1 class="mb-0">Editar Produto</h1>
                     <hr />
-                    <form action="{{ route("employee.update", $employees->id) }}" method="POST">
+                    <form action="{{ route("products.update", $products->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
-                    <p><a href="{{ route('employee.index') }}" class="btn btn-warning">Voltar</a></p>
+                    <p><a href="{{ route('products.index') }}" class="btn btn-warning">Voltar</a></p>
 
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Nome do Funcionário*</label>
-                            <input type="text" name="nome"  class="form-control" placeholder="Nome"  value="{{$employees->nome}}">
+                            <label class="form-label">Nome do produto*</label>
+                            <input type="text" name="nome" required class="form-control" placeholder="Nome"  value="{{$products->nome}}">
                             @error('nome')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -28,24 +28,24 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                        <label class="form-label">Setor do Funcionário*</label>
-                            <select id="sector" name="sector_id" required class="form-control" >
-                                <option value="">Selecione um Setor</option>
-                                    @forelse ($sectors as $sector)
-                                <option value="{{ $sector->id }}" {{ old('sector_id', $employees->sector_id) == $sector->id ? 'selected' : ''}}> {{ $sector->nome }} </option>
+                        <label class="form-label">Categoria do produto*</label>
+                            <select id="category" name="category_id" required class="form-control" >
+                                <option value="">Selecione uma Categoria</option>
+                                    @forelse ($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}> {{ $category->nome }} </option>
                                 @empty
                                     @endforelse
                             </select>
-                                    @error('sector_id')
+                                    @error('category_id')
                                 <span class="text-danger">{{$message}}</span>
                                     @enderror
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label class="form-label">Salário*</label>
-                            <input type="text" name="salario"  class="form-control" placeholder="Salário"  value="{{$employees->salario}}" onInput="mascaraMoeda(event);">
-                            @error('salario')
+                            <label class="form-label">Valor*</label>
+                            <input type="text" name="valor" required class="form-control" placeholder="Valor"  value="{{$products->valor}}" onInput="mascaraMoeda(event);">
+                            @error('valor')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
@@ -78,4 +78,4 @@ const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
     currency
   }).format(valor)
 }
-</script> 
+</script>
