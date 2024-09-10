@@ -26,6 +26,7 @@
                                 <th>Nome</th>
                                 <th>Categoria</th>
                                 <th>Valor</th>
+                                <th>Imagem</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -36,9 +37,12 @@
                                 <td class="align-middle">{{ $product->nome}}</td>
                                 <td class="align-middle">{{ $product->category->nome }}</td>
                                 <td class="align-middle">{{ $product->valor}}</td>
+                                <td class="align-middle"> 
+                                <img style="width:50px; height:50px" class="rounded-circle" src="{{ asset('img/employee/' . $product->image) }}" alt="Image not loaded"> 
+                                </td>
                                 <td class="align-middle">
                                         <a href="{{ route('products.edit', ['id'=>$product->id]) }}" type="button" class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('products.destroy', ['id'=>$product->id]) }}" type="button" class="btn btn-danger">Excluir</a>
+                                        <a href="{{ route('products.delete', ['id'=>$product->id]) }}" type="button" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                             @empty
