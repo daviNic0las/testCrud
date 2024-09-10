@@ -19,7 +19,7 @@
 
                         <p><a href="{{ route('products.index') }}" class="btn btn-primary">Voltar</a></p>
 
-                        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('products.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
@@ -42,7 +42,7 @@
                                     @error('category_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                </div> 
+                                </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col">
@@ -53,6 +53,17 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Enviar Imagem do Produto*</label>
+                                    <input type="file" name="image" value="{{ old("image") }}" class="form-control">
+                                    @error('image')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            
                             <div class="row">
                                 <div class="d-grid">
                                     <button class="btn btn-primary">Adicionar</button>
