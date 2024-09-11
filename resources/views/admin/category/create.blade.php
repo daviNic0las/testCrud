@@ -19,7 +19,7 @@
 
                         <p><a href="{{ route('category.index') }}" class="btn btn-primary">Voltar</a></p>
 
-                        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('category.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
