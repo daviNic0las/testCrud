@@ -5,20 +5,20 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('admin.index') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('admin.index') }}" style="text-decoration: none;">
+                        <img src="{{ asset('logo/LOGO APAE RUSSAS CE.png') }}" style="width: 115px">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('dashboard')" style="text-decoration: none;">
+                        {{ __('SIAPAE Russas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')" style="text-decoration: none;">
                         {{ __('Produtos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" style="text-decoration: none;">
                         {{ __('Categorias') }}
                     </x-nav-link>
                 </div>
@@ -41,7 +41,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" style="text-decoration: none;">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -49,7 +49,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link :href="route('logout')" style="text-decoration: none;"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}

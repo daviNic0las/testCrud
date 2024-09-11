@@ -31,9 +31,10 @@
                         <label class="form-label">Categoria do produto*</label>
                             <select id="category" name="category_id" required class="form-control" >
                                 <option value="">Selecione uma Categoria</option>
-                                    @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->nome }} </option>
-                                    @endforeach
+                                    @forelse ($categories as $category)
+                                <option value="{{ $category->id }} {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}"> {{ $category->nome }} </option>
+                                @empty
+                                    @endforelse
                             </select>
                                     @error('category_id')
                                 <span class="text-danger">{{$message}}</span>
@@ -52,7 +53,8 @@
                     <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Atualizar Imagem do Produto*</label>
-                                    <input type="file" name="image"   class="form-control">
+                                    <input type="file" name="image" class="form-control mb-2">
+                                    <img style="width:100px;" src="{{ asset('img/employee').'/'.$products->image }}" alt="Imagem não Carregada">
                                     @error('image')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
