@@ -14,9 +14,9 @@ class ProductController extends Controller
         $products = Product::orderBy('id', 'desc')->get();
         $total = Product::count();
         $produtos = Product::with('category')->get();
-        return view('admin.product.home', compact(['products','total']));
+        return view('admin.product.home', compact(['products', 'total']));
     }
-        public function create()
+    public function create()
     {
         $categories = Category::all();
         return view('admin.product.create', compact('categories'));
@@ -24,26 +24,29 @@ class ProductController extends Controller
 
     public function save(StoreUpdateSupport $request)
     {
-        
+
         $data = $request->validated();
         // dd($data);
-        $data = Product::create($data);
-        
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads/products', $filename, 'public');
-            $data['image'] = $path;
-            }
 
-        if ($data) {
-            session()->flash('success','Produto adicionado com sucesso');
+        if ($request->hasfile('image') && $request->file('image')->isValid()) {
+
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('img/employee/'), $imageName);
+            $data['image'] = $imageName;
+
+        } else {
+            $data['image'] = "Foto_Desconhecido.jpg";
+        };
+
+        $input = Product::create($data);
+        if ($input) {
+            session()->flash('success', 'Produto adicionado com sucesso');
             return redirect()->route('products.index');
         } else {
-            session()->flash('error','Falha na criação');
+            session()->flash('error', 'Falha na criação');
             return redirect()->route('products.create');
         }
-        
+
     }
 
     public function edit($id)
@@ -53,54 +56,65 @@ class ProductController extends Controller
         return view('admin.product.update', compact('products', 'categories'));
     }
 
-    public function delete($id)
-    {
-        $products = Product::findOrFail($id)->delete();
-        if ($products) {
-            session()->flash('success', 'Produto excluído com sucesso!');
-            return redirect()->route('products.index');
-        } else {
-            session()->flash('error','Erro na exclusão do item');
-            return redirect()->route('products.index');
-        }
-    }
     public function update(StoreUpdateSupport $request, $id)
     {
         $data = $request->validated();
 
-        $products = Product::findOrFail($id);
-        
-        $nome = $request->nome;
-        $category_id = $request->category_id;
-        $valor = $request->valor;
+        if ($request->has('image')) 
+        {
+            //Check old image
+            $destination = "img/employee/" . $request->image;
 
-        $products->nome = $nome;
-        $products->category_id = $category_id;
-        $products->valor = $valor;
-        $data = $products->save();
+            //remove old images
+            if(\File::exists($destination)) {
+                \File::delete($destination);
+            };
+            //Add new image
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            //Update new image
+            $request->image->move(public_path('img/employee/'), $imageName);
+            $data['image'] = $imageName;
 
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                \Storage::disk('public')->delete($product->image);
-           }
+        };
 
-            $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads/products', $filename, 'public');
-            $data['image'] = $path;
-       }
+        $product = product::find($id);
+        $input = $product->update($data);
 
-        if ($data) {
+        if ($input) {
             session()->flash('success', 'Produto atualizado com sucesso!');
             return redirect()->route('products.index');
         } else {
-            session()->flash('error','Falha na edição');
+            session()->flash('error', 'Falha na edição');
             return redirect()->route('products.update');
         }
 
-    
+    }
+
+    public function delete($id)
+    {
+        $data = Product::find($id);
+        if($data->image) 
+        {
+            $destination = public_path('img/employee/'.$data->image);
+
+            if(file_exists($destination && $destination =! public_path('img/employee/Foto_Desconhecido.jpg'))) 
+            {
+                unlink($destination);
+            }; 
+        };
+        $input = Product::destroy($id);
+        
+        if ($input) {
+            session()->flash('success', 'Produto excluído com sucesso!');
+            return redirect()->route('products.index');
+        } else {
+            session()->flash('error', 'Erro na exclusão do item');
+            return redirect()->route('products.index');
+        }
+
+
+    }
 }
-} 
 
 // if($this->has('image')) {
 //     $file = $this->file('image');
@@ -123,11 +137,9 @@ class ProductController extends Controller
 //     {
 //         $data = $request->validated();
 
-       
+
 
 // public function update(StoreUpdateSupport $request, $id)
 //     {
 //         $product = Product::findOrFail($id);
 //         $data = $request->validated();
-
-         
