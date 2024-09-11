@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="mb-0">Editar Produto</h1>
                     <hr />
-                    <form action="{{ route("products.update", $products->id) }}" method="POST">
+                    <form action="{{ route('products.update', $products->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -49,6 +49,15 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Atualizar Imagem do Produto*</label>
+                                    <input type="file" name="image"   class="form-control">
+                                    @error('image')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
                     <div class="row">
                         <div class="d-grid">
                             <button class="btn btn-warning">Atualizar</button>

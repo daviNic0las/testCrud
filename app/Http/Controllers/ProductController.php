@@ -97,7 +97,7 @@ class ProductController extends Controller
         {
             $destination = public_path('img/employee/'.$data->image);
 
-            if(file_exists($destination && $destination =! public_path('img/employee/Foto_Desconhecido.jpg'))) 
+            if($destination != public_path('img/employee/Foto_Desconhecido.jpg')) 
             {
                 unlink($destination);
             }; 
