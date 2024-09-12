@@ -51,8 +51,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::orderBy('nome', 'asc')->get();
         $products = Product::findOrFail($id);
-        $categories = Category::all();
         return view('admin.product.update', compact('products', 'categories'));
     }
 

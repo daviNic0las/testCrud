@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <!-- Adicione o link do Font Awesome no seu layout principal -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -13,13 +16,14 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 password-container">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                          type="password"
+                          name="password"
+                          required autocomplete="current-password" />
+            <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -48,3 +52,31 @@
         </div>
     </form>
 </x-guest-layout>
+
+<style>
+    .password-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .password-container input {
+        padding-right: 2.5rem; /* Espaço para o ícone */
+    }
+
+    .password-container i {
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translateY(30%);
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>

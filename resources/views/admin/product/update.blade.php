@@ -31,10 +31,13 @@
                         <label class="form-label">Categoria do produto*</label>
                             <select id="category" name="category_id" required class="form-control" >
                                 <option value="">Selecione uma Categoria</option>
-                                    @forelse ($categories as $category)
-                                <option value="{{ $category->id }} {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}"> {{ $category->nome }} </option>
+
+                                @forelse ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}> {{ $category->nome }} </option>
                                 @empty
-                                    @endforelse
+                                    <option value="">Nenhuma categoria encontrada</option>
+                                @endforelse
+
                             </select>
                                     @error('category_id')
                                 <span class="text-danger">{{$message}}</span>
