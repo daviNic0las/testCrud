@@ -82,9 +82,26 @@
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
-                {{ __('Product') }}
-            </x-responsive-nav-link>
+            <x-dropdown>
+                <x-slot name="trigger">
+                    <x-responsive-nav-link :active="request()->routeIs('products.*')">
+                        {{ __('Products') }}
+                    </x-responsive-nav-link>
+                </x-slot>
+            
+                <x-slot name="content">
+                <x-dropdown-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                    {{ __('All Products') }}
+                </x-dropdown-link>
+                
+                <x-dropdown-link :href="route('products.create')" :active="request()->routeIs('products.create')">
+                    {{ __('Add Product') }}
+                </x-dropdown-link>
+                </x-slot>
+                
+                
+                <!-- Adicione mais links conforme necessário -->
+            </x-dropdown>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
