@@ -23,8 +23,6 @@ Route::middleware('auth')->group(function () {
         'student' => StudentController::class,
         'category' => CategoryController::class,
     ]);
-
-
 });
 
 require __DIR__.'/auth.php';
