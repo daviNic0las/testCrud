@@ -70,13 +70,23 @@ class CategoryController extends Controller
 
         $data = $categories->save();
         if ($data) {
-            session()->flash('success', 'Categoria atualizada com sucesso!');
+            session()->flash('success', 'Diagnóstico atualizado com sucesso!');
             return redirect()->route('category.index');
         } else {
             session()->flash('error','Falha na edição');
             return redirect()->route('category.update');
         }
+    }
 
-    
-}
+    public function destroy($id)
+    {
+        $categories = Category::findOrFail($id)->delete();
+        if ($categories) {
+            session()->flash('success', 'Categoria excluída com sucesso!');
+            return redirect()->route('category.index');
+        } else {
+            session()->flash('error', 'Erro na exclusão do item');
+            return redirect()->route('category.index');
+        }
+    }
 }

@@ -1,7 +1,7 @@
 <x-app-layout> 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edição de Produto') }}
+            {{ __('Edição de Aluno') }}
         </h2>
     </x-slot>
 
@@ -9,28 +9,28 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="mb-0">Editar Produto</h1>
-                    <hr />
-                    <form action="{{ route('products.update', $products->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
+                    <form action="{{ route('products.update', $products->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-                    <p><a href="{{ route('products.index') }}" class="btn btn-warning">Voltar</a></p>
+                        <p><a href="{{ route('products.index') }}" class="btn btn-warning mb-4">Voltar</a></p>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Nome do produto*</label>
-                            <input type="text" name="nome" required class="form-control" placeholder="Nome"  value="{{$products->nome}}">
-                            @error('nome')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label">Nome do Aluno*</label>
+                                <input type="text" name="nome" required class="form-control" placeholder="Nome"
+                                    value="{{$products->nome}}">
+                                @error('nome')
+                                    <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                        <label class="form-label">Categoria do produto*</label>
-                            <select id="category" name="category_id" required class="form-control" >
-                                <option value="">Selecione uma Categoria</option>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Categoria do produto*</label>
+                                <select id="category" name="category_id" required class="form-control">
+                                    <option value="">Selecione uma Categoria</option>
 
                                 @forelse ($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}> {{ $category->nome }} </option>

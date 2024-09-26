@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight m-bottom">
             {{ __('Categorias Administrador') }}
         </h2>
     </x-slot>
@@ -10,8 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h1 class="mb-0">Lista de Categorias</h1>
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">Adicionar Categoria</a>
+                        <h1 class="mb-0">Lista de Diagnósticos</h1>
+                        <a href="{{ route('category.create') }}" class="btn btn-primary mb-4">Adicionar Diagnóstico</a>
                     </div>
                     <hr />
                     @if(Session::has('success'))
@@ -33,13 +33,26 @@
                                 <td class="align-middle">{{ $loop->iteration}}</td>
                                 <td class="align-middle">{{ $category->nome}}</td>
                                 <td class="align-middle">
-                                        <a href="{{ route('category.edit', ['id'=>$category->id]) }}" type="button" class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('category.delete', ['id'=>$category->id]) }}" type="button" class="btn btn-danger">Excluir</a>
+                                    <a href="{{ route('category.edit', ['category' => $category->id]) }}" title="Edit categpries">
+                                        <button class="btn btn-warning">
+                                                {{ __('Editar') }}
+                                        </button>
+                                    </a>
+ 
+                                    <form method="POST"
+                                        action="{{ route('category.destroy', ['category' => $category->id]) }}"
+                                        accept-charset="UTF-8" style="display:inline">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger" title="Delete categories">
+                                                {{ __('Delete') }}
+                                            </button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-center" colspan="5">Categoria não encontrada. Crie uma nova para poder criar seus produtos!</td>
+                                <td class="text-center" colspan="5">Nenhum Diagnóstico encontrado.</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -49,3 +62,4 @@
         </div>
     </div>
 </x-app-layout>
+

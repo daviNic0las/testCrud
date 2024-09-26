@@ -16,10 +16,10 @@
                         {{ __('SIAPAE Russas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')" style="text-decoration: none;">
-                        {{ __('Produtos') }}
+                        {{ __('Lista de Alunos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" style="text-decoration: none;">
-                        {{ __('Categorias') }}
+                        {{ __('Diagnósticos') }}
                     </x-nav-link>
                 </div>
             </div>

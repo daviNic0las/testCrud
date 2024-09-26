@@ -1,7 +1,7 @@
 <x-app-layout> 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Criar Produto') }}
+            {{ __('Adicionar novo Aluno') }}
         </h2>
     </x-slot>
 
@@ -9,15 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                        <h1 class="mb-0">Novo Produto</h1>
-                        <hr />
+                        
                         @if (session()->has('error'))
                         <div>
                             {{session('error')}}
                         </div>
                         @endif
 
-                        <p><a href="{{ route('products.index') }}" class="btn btn-primary">Voltar</a></p>
+                        <p><a href="{{ route('products.index') }}" class="btn btn-primary mb-4">Voltar</a></p>
 
                         <form action="{{ route('products.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf

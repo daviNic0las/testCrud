@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->unsignedBigInteger('category_id');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    
+    // mudar product pra student e adicionar as coisas da model extras.
     /**
      * Reverse the migrations.
      */
