@@ -11,7 +11,8 @@ class Student extends Model
     use HasFactory;
     protected $state = 'students';
     protected $fillable = [
-        'nome',
+        'name',
+        'date_of_birth',
         'category_id',
         'class',
         'student_id',

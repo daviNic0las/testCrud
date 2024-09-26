@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdateSupport;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Models\Category;
 
 class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::orderBy('id', 'desc')->get();
+        $students = Student::orderBy('student_id', 'desc')->get();
         $total = Student::count();
-        $produtos = Student::with('category')->get();
+        $estudantes = Student::with('category')->get();
         return view('admin.student.home', compact(['students', 'total']));
     }
     public function create()
@@ -22,7 +22,7 @@ class StudentController extends Controller
         return view('admin.student.create', compact('categories'));
     }
 
-    public function store(StoreUpdateSupport $request)
+    public function store(StudentUpdateRequest $request)
     {
 
         $data = $request->validated();
@@ -41,10 +41,10 @@ class StudentController extends Controller
         $input = Student::create($data);
         if ($input) {
             session()->flash('success', 'Aluno adicionado com sucesso');
-            return redirect()->route('students.index');
+            return redirect()->route('admin.students.home');
         } else {
             session()->flash('error', 'Falha na criação');
-            return redirect()->route('students.create');
+            return redirect()->route('admin.students.create');
         }
 
     }
@@ -52,11 +52,11 @@ class StudentController extends Controller
     public function edit($id)
     {
         $students = Student::findOrFail($id);
-        $categories = Category::orderBy('nome', 'asc')->get();
-        return view('admin.student.update', compact('students', 'categories'));
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('student.update', compact('students', 'categories'));
     }
 
-    public function update(StoreUpdateSupport $request, $id)
+    public function update(StudentUpdateRequest $request, $id)
     {
         $data = $request->validated();
 
@@ -82,10 +82,10 @@ class StudentController extends Controller
 
         if ($input) {
             session()->flash('success', 'Aluno atualizado com sucesso!');
-            return redirect()->route('students.index');
+            return redirect()->route('admin.students.home');
         } else {
             session()->flash('error', 'Falha na edição');
-            return redirect()->route('students.update');
+            return redirect()->route('admin.students.update');
         }
 
     }
@@ -107,10 +107,10 @@ class StudentController extends Controller
         
         if ($input) {
             session()->flash('success', 'Aluno excluído com sucesso!');
-            return redirect()->route('students.index');
+            return redirect()->route('admin.students.home');
         } else {
             session()->flash('error', 'Erro na exclusão do item');
-            return redirect()->route('students.index');
+            return redirect()->route('admin.students.home');
         }
 
 

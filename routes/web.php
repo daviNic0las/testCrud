@@ -24,9 +24,7 @@ Route::middleware('auth')->group(function () {
         'category' => CategoryController::class,
     ]);
 
-    Route::fallback(function () {
-        return view('errors.404');
-    });
+
 });
 
 require __DIR__.'/auth.php';

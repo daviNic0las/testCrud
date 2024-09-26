@@ -17,13 +17,13 @@
 
                         <p><a href="{{ route('category.index') }}" class="btn btn-primary mb-4">Voltar</a></p>
 
-                        <form action="{{ route('category.save') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label">Nome do Diagnóstico*</label>
-                                    <input type="text" name="nome" required value="{{ old("nome") }}" class="form-control required" placeholder="Nome">
-                                    @error('nome')
+                                    <input type="text" name="name" required value="{{ old("name") }}" class="form-control required" placeholder="Nome">
+                                    @error('name')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>

@@ -14,21 +14,23 @@ return new class extends Migration
 
         Schema::create('categories', function (Blueprint $table){
             $table->id();
-            $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
 
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
+            $table->string('name');
+            $table->date('date_of_birth');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('valor');
+            $table->string('class');
+            $table->string('student_id');
+            $table->string('school');
             $table->string('image')->nullable();
             $table->timestamps();
         });
     }
-    // mudar product pra student e adicionar as coisas da model extras.
+    // mudar nome pra name nos devidos lugares.
     /**
      * Reverse the migrations.
      */

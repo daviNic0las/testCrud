@@ -5,17 +5,17 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('admin.index') }}" style="text-decoration: none;">
+                    <a href="{{ route('dashboard') }}" style="text-decoration: none;">
                         <img src="{{ asset('logo/LOGO APAE RUSSAS CE.png') }}" style="width: 115px">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('dashboard')" style="text-decoration: none;">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" style="text-decoration: none;">
                         {{ __('SIAPAE Russas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')" style="text-decoration: none;">
+                    <x-nav-link :href="route('student.index')" :active="request()->routeIs('student.index')" style="text-decoration: none;">
                         {{ __('Lista de Alunos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')" style="text-decoration: none;">

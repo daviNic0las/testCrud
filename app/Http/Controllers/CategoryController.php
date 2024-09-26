@@ -26,7 +26,7 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
-    public function save(CategoryUpdateRequest $request)
+    public function store(CategoryUpdateRequest $request)
     {
         
         $data = $request->validated();
@@ -64,9 +64,9 @@ class CategoryController extends Controller
 
         $categories = Category::findOrFail($id);
         
-        $nome = $request->nome;
+        $name = $request->name;
         
-        $categories->nome = $nome;
+        $categories->name = $name;
 
         $data = $categories->save();
         if ($data) {

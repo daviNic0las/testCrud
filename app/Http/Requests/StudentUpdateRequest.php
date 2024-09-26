@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest 
+class StudentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +23,27 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-            $rules = ['name' => 'required|min:1|max:255|unique:categories'];
+        $rules = [
+            'nome' => 'required|min:1|max:255|unique:students',
+            'date_of_birth' => 'required|min:1|max:255',
+            'category_id' => 'required|min:1|max:255',
+            'class' => 'required|min:1|max:255',
+            'student_id' => 'required|min:1|max:255|unique:students',
+            'school' => 'required|min:1|max:255',
+            'image => nullable|mimes:png,jpg,jpeg,webp|max:2048',
+        ];
+
+            
 
             if ($this->Method() === 'PUT') {
                 $rules['name'] = [  
                     'required',
                     'min:1',
                     'max:255',
-                    Rule::unique('categories')->ignore($this->id),
+                    Rule::unique('products')->ignore($this->id),
                 ];
             }
         
             return $rules;
     }
-}
+} 

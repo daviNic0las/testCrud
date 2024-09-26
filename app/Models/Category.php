@@ -11,7 +11,7 @@ class Category extends Model
     use HasFactory;
     protected $state = 'categories';
     protected $fillable = [
-        'nome',
+        'name',
     ];
     public function products(): Hasmany
     {

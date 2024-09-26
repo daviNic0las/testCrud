@@ -19,9 +19,9 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">Nome do Aluno*</label>
-                                <input type="text" name="nome" required class="form-control" placeholder="Nome"
-                                    value="{{$products->nome}}">
-                                @error('nome')
+                                <input type="text" name="name" required class="form-control" placeholder="Nome"
+                                    value="{{$students->name}}">
+                                @error('name')
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
@@ -33,7 +33,7 @@
                                     <option value="">Selecione uma Categoria</option>
 
                                 @forelse ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}> {{ $category->nome }} </option>
+                                    <option value="{{ $category->id }}" {{ old('category_id', $products->category_id) == $category->id ? 'selected' : ''}}> {{ $category->name }} </option>
                                 @empty
                                     <option value="">Nenhuma categoria encontrada</option>
                                 @endforelse
