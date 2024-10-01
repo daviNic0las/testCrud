@@ -24,18 +24,18 @@ class StudentUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'nome' => 'required|min:1|max:255|unique:students',
-            'date_of_birth' => 'required|min:1|max:255',
+            'name' => 'required|min:1|max:255|unique:students',
+            'date_of_birth' => 'required|min:1',
             'category_id' => 'required|min:1|max:255',
             'class' => 'required|min:1|max:255',
-            'student_id' => 'required|min:1|max:255|unique:students',
+            'student_id' => 'required|min:1|unique:students',
             'school' => 'required|min:1|max:255',
             'image => nullable|mimes:png,jpg,jpeg,webp|max:2048',
         ];
 
             
 
-            if ($this->Method() === 'PUT') {
+            if ($this->method() === 'PUT') {
                 $rules['name'] = [  
                     'required',
                     'min:1',

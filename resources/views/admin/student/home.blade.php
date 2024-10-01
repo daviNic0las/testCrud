@@ -25,7 +25,7 @@
                                 <th>Nome</th>
                                 <th>Data Nasc.</th>
                                 <th>Turma</th>
-                                <th>ID</th>
+                                <th>ID do Aluno</th>
                                 <th>Escola</th>
                                 <th>Diagnóstico</th>
                                 <th>Ações</th>

@@ -29,6 +29,42 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Data de Nascimento*</label>
+                                    <input type="date" name="date_of_birth" required value="{{ old("date_of_birth") }}" class="form-control required" placeholder="01/01/01">
+                                    @error('date_of_birth')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Turma*</label>
+                                    <input type="text" name="class" required value="{{ old("class") }}" class="form-control" placeholder="Classe" ">
+                                    @error('class')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">ID do Aluno*</label>
+                                    <input type="number" name="student_id" required value="{{ old("student_id") }}" class="form-control" placeholder="ID do Aluno" ">
+                                    @error('student_id')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                <label class="form-label">Escola*</label>
+                                    <input type="text" name="school" required value="{{ old("school") }}" class="form-control" placeholder="Escola/Instituição" ">
+                                    @error('school')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="row mb-3"> 
                                 <div class="col">
                                 <label class="form-label">Diagnóstico do aluno*</label>
@@ -43,16 +79,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                <label class="form-label">Turma*</label>
-                                    <input type="text" name="class" required value="{{ old("class") }}" class="form-control" placeholder="Classe" ">
-                                    @error('class')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Enviar Imagem do Produto*</label>
