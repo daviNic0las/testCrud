@@ -32,7 +32,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Data de Nascimento*</label>
-                                    <input type="date" name="date_of_birth" required value="{{ old("date_of_birth") }}" class="form-control required" placeholder="01/01/01">
+                                <input type="date" id="date_of_birth" name="date_of_birth" required value="2012-12-12" class="form-control required">
                                     @error('date_of_birth')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -41,7 +41,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Turma*</label>
-                                    <input type="text" name="class" required value="{{ old("class") }}" class="form-control" placeholder="Classe" ">
+                                    <input type="text" name="class" required value="{{ old("class") }}" class="form-control" placeholder="Classe">
                                     @error('class')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -50,7 +50,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">ID do Aluno*</label>
-                                    <input type="number" name="student_id" required value="{{ old("student_id") }}" class="form-control" placeholder="ID do Aluno" ">
+                                    <input type="number" name="student_id" required value="{{ old("student_id") }}" class="form-control" placeholder="ID do Aluno">
                                     @error('student_id')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -59,7 +59,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Escola*</label>
-                                    <input type="text" name="school" required value="{{ old("school") }}" class="form-control" placeholder="Escola/Instituição" ">
+                                    <input type="text" name="school" required value="{{ old("school") }}" class="form-control" placeholder="Escola/Instituição">
                                     @error('school')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -100,8 +100,13 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    // onInput="mascaraMoeda(event);
+
+
+<!-- <script>
+    onInput="mascaraMoeda(event);
+
+
+
     const mascaraMoeda = (event) => {
   const onlyDigits = event.target.value
     .split("")
@@ -118,4 +123,4 @@ const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
     currency
   }).format(valor)
 }
-</script>
+</script> -->

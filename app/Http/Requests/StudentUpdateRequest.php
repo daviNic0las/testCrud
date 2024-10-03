@@ -40,7 +40,7 @@ class StudentUpdateRequest extends FormRequest
                     'required',
                     'min:1',
                     'max:255',
-                    Rule::unique('products')->ignore($this->id),
+                    Rule::unique('students')->ignore($this->id),
                 ];
             }
         

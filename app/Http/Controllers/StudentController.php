@@ -41,10 +41,10 @@ class StudentController extends Controller
         $input = Student::create($data);
         if ($input) {
             session()->flash('success', 'Aluno adicionado com sucesso');
-            return redirect()->route('admin.students.home');
+            return redirect()->route('student.index');
         } else {
             session()->flash('error', 'Falha na criação');
-            return redirect()->route('admin.students.create');
+            return redirect()->route('student.create');
         }
 
     }
@@ -53,7 +53,7 @@ class StudentController extends Controller
     {
         $students = Student::findOrFail($id);
         $categories = Category::orderBy('name', 'asc')->get();
-        return view('student.update', compact('students', 'categories'));
+        return view('admin.student.update', compact('students', 'categories'));
     }
 
     public function update(StudentUpdateRequest $request, $id)
@@ -82,10 +82,10 @@ class StudentController extends Controller
 
         if ($input) {
             session()->flash('success', 'Aluno atualizado com sucesso!');
-            return redirect()->route('admin.students.home');
+            return redirect()->route('student.index');
         } else {
             session()->flash('error', 'Falha na edição');
-            return redirect()->route('admin.students.update');
+            return redirect()->route('student.update');
         }
 
     }
@@ -107,10 +107,10 @@ class StudentController extends Controller
         
         if ($input) {
             session()->flash('success', 'Aluno excluído com sucesso!');
-            return redirect()->route('admin.students.home');
+            return redirect()->route('student.index');
         } else {
             session()->flash('error', 'Erro na exclusão do item');
-            return redirect()->route('admin.students.home');
+            return redirect()->route('student.index');
         }
 
 

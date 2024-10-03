@@ -28,15 +28,15 @@
                                 <th>ID do Aluno</th>
                                 <th>Escola</th>
                                 <th>Diagnóstico</th>
+                                <th>Foto</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($students as $student)
                                 <tr> 
-                                    <td class="align-middle">{{ $loop->iteration}}</td>
                                     <td class="align-middle">{{ $student->name}}</td>
-                                    <td class="align-middle">{{ $student->date_of_birth}}</td>
+                                    <td class="align-middle">{{ \Carbon\Carbon::parse($student->date_of_birth)->format('d/m/Y') }}</td>
                                     <td class="align-middle">{{ $student->class}}</td>
                                     <td class="align-middle">{{ $student->student_id}}</td>
                                     <td class="align-middle">{{ $student->school}}</td>
@@ -47,14 +47,14 @@
                                     </td>
                                     
                                     <td class="align-middle">
-                                        <a href="{{ route('students.edit', ['student' => $student->id]) }}" title="Edit students">
+                                        <a href="{{ route('student.edit', ['student' => $student->id]) }}" title="Edit students">
                                             <button class="btn btn-warning">
                                                 {{ __('Editar') }}
                                             </button>
                                         </a>
  
                                         <form method="POST"
-                                            action="{{ route('students.destroy', ['student' => $student->id]) }}"
+                                            action="{{ route('student.destroy', ['student' => $student->id]) }}"
                                             accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}

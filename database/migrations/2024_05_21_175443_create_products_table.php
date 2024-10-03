@@ -19,6 +19,7 @@ return new class extends Migration
         });
 
         Schema::create('students', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->date('date_of_birth');
             $table->unsignedBigInteger('category_id');
@@ -37,8 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('students');
     }
 };
-
-// 5:00

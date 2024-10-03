@@ -24,7 +24,6 @@
                           name="password"
                           required autocomplete="current-password" />
             <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
-
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
