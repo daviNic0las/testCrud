@@ -169,6 +169,11 @@ return [
     */
 
     'attributes' => [
+        'date_of_birth' => 'data de nascimento',
+        'category_id' => 'diagnóstico',
+        'class' => 'turma',
+        'student_id' => 'ID do aluno',
+        'school' => 'escola',
         'address'   => 'endereço',
         'age'       => 'idade',
         'body'      => 'conteúdo',

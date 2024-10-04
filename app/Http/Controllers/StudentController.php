@@ -40,10 +40,10 @@ class StudentController extends Controller
 
         $input = Student::create($data);
         if ($input) {
-            session()->flash('success', 'Aluno adicionado com sucesso');
+            session()->flash('success', 'Aluno adicionado com sucesso!');
             return redirect()->route('student.index');
         } else {
-            session()->flash('error', 'Falha na criação');
+            session()->flash('error', 'Falha na adição do aluno.');
             return redirect()->route('student.create');
         }
 
@@ -57,38 +57,31 @@ class StudentController extends Controller
     }
 
     public function update(StudentUpdateRequest $request, $id)
-    {
-        $data = $request->validated();
+{
+    $student = Student::findOrFail($id);
+    $data = $request->validated();
 
-        if ($request->has('image')) 
-        {
-            //Check old image
-            $destination = "img/employee/" . $request->image;
-
-            //remove old images
-            if(\File::exists($destination)) {
-                \File::delete($destination);
-            };
-            //Add new image
-            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-            //Update new image
-            $request->image->move(public_path('img/employee/') . '/' . $imageName);
-            $data['image'] = $imageName;
-
-        };
-
-        $student = Student::find($id);
-        $input = $student->update($data);
-
-        if ($input) {
-            session()->flash('success', 'Aluno atualizado com sucesso!');
-            return redirect()->route('student.index');
-        } else {
-            session()->flash('error', 'Falha na edição');
-            return redirect()->route('student.update');
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if (\File::exists(public_path('img/employee/' . $student->image)) && $student->image !== "Foto_Desconhecido.jpg") {
+            \File::delete(public_path('img/employee/' . $student->image));
         }
 
+        $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+        $request->image->move(public_path('img/employee/'), $imageName);
+        $data['image'] = $imageName;
     }
+
+    $input = $student->fill($data)->save();
+
+    if ($input) {
+        session()->flash('success', 'Aluno atualizado com sucesso!');
+        return redirect()->route('student.index');
+    } else {
+        session()->flash('error', 'Falha na edição do aluno.');
+        return redirect()->route('student.update', $student->id)->withInput($request->all());
+    }
+}
+
 
     public function destroy($id)
     {
@@ -109,7 +102,7 @@ class StudentController extends Controller
             session()->flash('success', 'Aluno excluído com sucesso!');
             return redirect()->route('student.index');
         } else {
-            session()->flash('error', 'Erro na exclusão do item');
+            session()->flash('error', 'Erro na exclusão do aluno.');
             return redirect()->route('student.index');
         }
 

@@ -62,25 +62,28 @@
                                 </div>
                             </div>
                             <div class="row mb-3"> 
-                                <div class="col">
-                                <label class="form-label">Diagnóstico do aluno*</label>
-                                    <select id="category" name="category_id" required class="form-control" >
-                                        <option value="">Selecione um Diagnóstico</option>
-                                        @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"> 
-                                            {{ $category->name }} 
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                            </div>
+                        <div class="col">
+                            <label class="form-label">Diagnóstico do aluno*</label>
+                            <select id="category" name="category_id" required class="form-select">
+                                <option value="">Selecione um Diagnóstico</option>
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $students->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
                             <div class="row mb-3">
                                 <div class="col">
                                 <label class="form-label">Enviar Imagem do Produto*</label>
-                                    <input type="file" name="image" value="{{ old("image") }}" class="form-control">
+                                    <input type="file" name="image" value="{{ old("image") }}" class="form-control mb-2">
+                                    <img style="width: 100px" value="" src="{{ asset('img/employee/' . $students->image) }}" alt="Imagem não Carregada">
+                                    
                                     @error('image')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

@@ -68,7 +68,7 @@
                             <div class="row mb-3"> 
                                 <div class="col">
                                 <label class="form-label">Diagnóstico do aluno*</label>
-                                    <select id="category" name="category_id" required class="form-control" >
+                                    <select id="category" name="category_id" required class="form-select" >
                                         <option value="">Selecione um Diagnóstico</option>
                                         @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"> {{ $category->name }} </option>

@@ -16,7 +16,7 @@ class Student extends Model
         'category_id',
         'class',
         'student_id',
-        'school',
+        'school', 
         'image',
     ];
     

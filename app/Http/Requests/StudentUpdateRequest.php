@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
-use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StudentUpdateRequest extends FormRequest
@@ -23,27 +22,27 @@ class StudentUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules = [
-            'name' => 'required|min:1|max:255|unique:students',
-            'date_of_birth' => 'required|min:1',
+        $studentId = $this->route('student'); // Captura o id da rota
+
+        return [
+            'name' => [
+                'required',
+                'min:1',
+                'max:255',
+                Rule::unique('students')->ignore($studentId),
+            ],
+            'date_of_birth' => 'required|min:1|max:2100',
             'category_id' => 'required|min:1|max:255',
             'class' => 'required|min:1|max:255',
-            'student_id' => 'required|min:1|unique:students',
+            'student_id' => [
+                'required',
+                'min:1',
+                Rule::unique('students')->ignore($studentId),
+            ],
             'school' => 'required|min:1|max:255',
-            'image => nullable|mimes:png,jpg,jpeg,webp|max:2048',
+            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
         ];
-
-            
-
-            if ($this->method() === 'PUT') {
-                $rules['name'] = [  
-                    'required',
-                    'min:1',
-                    'max:255',
-                    Rule::unique('students')->ignore($this->id),
-                ];
-            }
-        
-            return $rules;
     }
-} 
+}
+
+// o max date ta errado
