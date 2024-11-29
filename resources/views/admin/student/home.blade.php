@@ -34,32 +34,29 @@
                         </thead>
                         <tbody>
                             @forelse ($students as $student)
-                                <tr> 
-                                    <td class="align-middle">{{ $student->name}}</td>
+                                <tr data-href="{{ route('student.show', ['student' => $student->id]) }}" style="cursor: pointer;">
+                                    <td class="align-middle">{{ $student->name }}</td>
                                     <td class="align-middle">{{ \Carbon\Carbon::parse($student->date_of_birth)->format('d/m/Y') }}</td>
-                                    <td class="align-middle">{{ $student->class}}</td>
-                                    <td class="align-middle">{{ $student->student_id}}</td>
-                                    <td class="align-middle">{{ $student->school}}</td>
+                                    <td class="align-middle">{{ $student->class }}</td>
+                                    <td class="align-middle">{{ $student->student_id }}</td>
+                                    <td class="align-middle">{{ $student->school }}</td>
                                     <td class="align-middle">{{ $student->category->name }}</td>
                                     <td class="align-middle">
                                         <img style="width:50px; height:50px" class="rounded-circle"
-                                            src="{{ asset('img/employee/' . $student->image) }}" alt="Image not loaded">
+                                            src="{{ asset('img/employee/' . $student->image) }}" alt="Imagem não Carregada">
                                     </td>
-                                    
                                     <td class="align-middle">
                                         <a href="{{ route('student.edit', ['student' => $student->id]) }}" title="Edit students">
                                             <button class="btn btn-warning">
                                                 {{ __('Editar') }}
                                             </button>
                                         </a>
- 
-                                        <form method="POST"
-                                            action="{{ route('student.destroy', ['student' => $student->id]) }}"
-                                            accept-charset="UTF-8" style="display:inline">
+
+                                        <form method="POST" action="{{ route('student.destroy', ['student' => $student->id]) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger" title="Delete students">
-                                                {{ __('Delete') }}
+                                                {{ __('Deletar') }}
                                             </button>
                                         </form>
                                     </td>
@@ -75,4 +72,15 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rows = document.querySelectorAll("tr[data-href]");
+            rows.forEach(row => {
+                row.addEventListener("click", function() {
+                    window.location.href = this.dataset.href;
+                });
+            });
+        });
+    </script>
+</x-app-layout>

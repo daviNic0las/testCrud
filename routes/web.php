@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CategoryController;
 
+
 Route::get('/', function () {
     return view('auth/login');
 });

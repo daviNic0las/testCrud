@@ -56,6 +56,16 @@ class StudentController extends Controller
         return view('admin.student.update', compact('students', 'categories'));
     }
 
+    public function show($id)
+    {
+
+    $student = Student::findOrFail($id);
+    $categories = Category::all();
+    return view('admin.student.show', compact('student', 'categories'));
+
+    }
+
+
     public function update(StudentUpdateRequest $request, $id)
 {
     $student = Student::findOrFail($id);
