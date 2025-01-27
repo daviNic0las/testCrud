@@ -11,7 +11,10 @@
                 <div class="p-6 text-gray-900">
                     <div class="d-flex align-items-center justify-content-between">
                         <h1 class="mb-0">Tabela Alunos</h1>
-                        <a href="{{ route('student.create') }}" class="btn btn-primary mb-4">Adicionar Aluno</a>
+                        <div>
+                            <a href="{{ route('student.create') }}" class="btn btn-primary mb-4">Adicionar Aluno</a>
+                            <a href="{{ route('students.export') }}" class="btn btn-secondary mb-4">Exportar Alunos</a>
+                        </div>
                     </div>
                     <hr />
                     @if(Session::has('success'))
